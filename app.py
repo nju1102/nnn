@@ -14,13 +14,22 @@ def handle_form():
     gender = request.form.get('gender')
     email = request.form.get('email')
 
-    # Validate ID number (英文一個字母開頭，後面接著9個數字)
-    if not re.match(r'^\d+$', id_number):
-        return "Invalid ID number", 400
-
+    # Validate ID number (assuming 台灣ID)
+    if len(id_number)!=10:
+        return"身分證碼應該為10碼",400
+    if not id_number[0].islpha():
+        return "第一個字元應該為英文字母碼", 400 
+    if len(id_number)!=10:
+       
+        
     # Validate name (assuming it's alphabetic)
     if not re.match(r'^[A-Za-z\s]+$', name):
-        return "Invalid name", 400
+        return "身分證碼後九碼應為數字", 400
+          return"身分證碼應該為10碼",400
+         if len(id_number)!=10:
+        return"身分證碼應該為10碼",400
+         if len(id_number)!=10:
+        return"身分證碼應該為10碼",400
 
     # Validate gender
     if gender not in ['Male', 'Female']:
